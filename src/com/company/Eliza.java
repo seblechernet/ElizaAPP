@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Eliza {
 
@@ -22,16 +19,25 @@ public class Eliza {
     }
 
     public String respond(String chat) {
-//  instatiate a new Converastion class to use it for the user
+//  instantiate a new Conversation class to use it for the user
         Conversation conv1=new Conversation();
         conv1.setWho("User");
         conv1.setText(chat);
 // add the new Conversation object to the Arraylist of conversations
         conversations.add(conv1);
-        String sentence="";
-// Split the in put from the user in to words and reaplace the words i with you, am with are, my with your,me with you
-        String[] response=chat.split("\\s");
+// Create a new string array to hold the responses of eliza and add all thye responses in to the array
+        String[] elizaResp=new String[3];
+        elizaResp[0]="Why do you say ";
+        elizaResp[1]="Please tell me more ";
+        elizaResp[2]="You seem to think that ";
 
+// Split the input from the user in to words and reaplace the words i with you, am with are, my with your,me with you
+
+        String[] response=chat.split("\\s");
+        Random rd=new Random();
+// Generate a random number and use it to select a random index of response from elisa's responses
+        int index=rd.nextInt(3);
+        String sentence=elizaResp[index];
         for(int i=0;i<response.length;i++){
             if(response[i].equalsIgnoreCase("i")){
                 response[i]="you";
@@ -46,12 +52,16 @@ public class Eliza {
                 response[i]="you";
             }
             String space = " ";
+          if(index==1){
+              sentence=elizaResp[1];
+          }
+          else
             sentence=sentence.concat(response[i]);
             sentence=sentence.concat(space);
 
 
         }
-//  instatiate a new Converastion class to use it for the Eliza
+//  instantiate a new Conversation class to use it for Eliza
         Conversation conv2=new Conversation();
         conv2.setWho("Eliza");
         conv2.setText(sentence);
