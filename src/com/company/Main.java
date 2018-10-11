@@ -17,10 +17,13 @@ public class Main {
         }
 
 // Print the history fo the conversation by calling the history method from Eliza class
-        for (Conversation eachConversation:eliza.history()){
-            System.out.println(eachConversation.getWho() + " : " +eachConversation.getText());
+        System.out.println("Do you want to see the converasion History?(Y/N)");
+        String seeHistory=sc.nextLine();
+        if ((seeHistory.equalsIgnoreCase("y"))) {
+            for (Conversation eachConversation : eliza.history()) {
+                System.out.println(eachConversation.getWho() + " : " + eachConversation.getText());
+            }
         }
-
 
     }
 }

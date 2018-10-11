@@ -60,15 +60,16 @@ public class Eliza {
                     response[i] = "you";
                     check=true;
                 }
+
+                if (response[i].equalsIgnoreCase("you") && check==false && i==response.length-1) {
+                    response[i] = "me";
+                    check =true;
+                }
                 if (response[i].equalsIgnoreCase("you") && check==false ) {
                     response[i] = "I";
                     check = true;
                 }
-                if (response[i].equalsIgnoreCase("you") && check==false && i==response.length) {
-                    response[i] = "me";
-                    check =true;
-                }
-                if (response[i].equalsIgnoreCase("are")&& check==false && response[i-1].equalsIgnoreCase("you")) {
+                if (response[i].equalsIgnoreCase("are")&& check==false && response[i-1].equalsIgnoreCase("I")) {
                     response[i] = "am";
                     check=true;
                 }
