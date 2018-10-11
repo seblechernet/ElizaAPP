@@ -40,25 +40,45 @@ public class Eliza {
 // Generate a random number and use it to select a random index of response from elisa's responses
             int index = rd.nextInt(3);
             String sentence = elizaResp[index];
+
             for (int i = 0; i < response.length; i++) {
-                if (response[i].equalsIgnoreCase("i")) {
+                boolean check=false;
+                if (response[i].equalsIgnoreCase("i")&& check==false) {
                     response[i] = "you";
+                    check=true;
                 }
-                if (response[i].equalsIgnoreCase("am")) {
+
+                if (response[i].equalsIgnoreCase("am")&& check==false) {
                     response[i] = "are";
-                }
-                if (response[i].equalsIgnoreCase("my")) {
+                    check=true;
+                             }
+                if (response[i].equalsIgnoreCase("my")&& check==false) {
                     response[i] = "your";
+                    check = true;
                 }
-                if (response[i].equalsIgnoreCase("me")) {
+                if (response[i].equalsIgnoreCase("me")&& check==false) {
                     response[i] = "you";
+                    check=true;
                 }
+                if (response[i].equalsIgnoreCase("you") && check==false ) {
+                    response[i] = "I";
+                    check = true;
+                }
+                if (response[i].equalsIgnoreCase("you") && check==false && i==response.length) {
+                    response[i] = "me";
+                    check =true;
+                }
+                if (response[i].equalsIgnoreCase("are")&& check==false && response[i-1].equalsIgnoreCase("you")) {
+                    response[i] = "am";
+                    check=true;
+                }
+
                 String space = " ";
                 if (index == 1) {
                     sentence = elizaResp[1];
                 } else
                     sentence = sentence.concat(response[i]);
-                sentence = sentence.concat(space);
+                   sentence = sentence.concat(space);
 
 
             }
